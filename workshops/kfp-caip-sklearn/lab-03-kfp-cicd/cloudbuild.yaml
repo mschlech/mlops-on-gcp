@@ -37,12 +37,22 @@ steps:
   - |
     dsl-compile --py $_PIPELINE_DSL --output $_PIPELINE_PACKAGE
   env:
-  - 'BASE_IMAGE=gcr.io/$PROJECT_ID/$_BASE_IMAGE_NAME:$TAG_NAME'
-  - 'TRAINER_IMAGE=gcr.io/$PROJECT_ID/$_TRAINER_IMAGE_NAME:$TAG_NAME'
+  - 'BASE_IMAGE=base_image
+  - 'TRAINER_IMAGE=trainer_image
   - 'RUNTIME_VERSION=$_RUNTIME_VERSION'
   - 'PYTHON_VERSION=$_PYTHON_VERSION'
   - 'COMPONENT_URL_SEARCH_PREFIX=$_COMPONENT_URL_SEARCH_PREFIX'
   - 'USE_KFP_SA=$_USE_KFP_SA'
+  - 'PIPELINE_DSL	covertype_training_pipeline.py'
+  - 'PIPELINE_FOLDER	workshops/kfp-caip-sklearn/lab-03-kfp-cicd'
+  - 'PIPELINE_DSL	covertype_training_pipeline.p'
+  - 'PIPELINE_NAME	covertype_training_deployment'
+  - 'PIPELINE_PACKAGE	covertype_training_pipeline.yaml'
+  - 'PYTHON_VERSION	3.7'
+  - 'RUNTIME_VERSION	1.15'
+  - 'TRAINER_IMAGE_NAME	trainer_image'
+  - 'USE_KFP_SA	False'
+  
   dir: $_PIPELINE_FOLDER/pipeline
   
  # Upload the pipeline
